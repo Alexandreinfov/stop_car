@@ -2,7 +2,7 @@
 
 	include("classeForm.php");
 	include("conexao.php");
-	
+	include("autenticacao.php");
 	
 	$parametros = null;
 	$parametros["action"] = "insere.php?tabela=Cliente"; //"tabela" é o indice o vetor GET, e "cliente" é o elemento do indice "tabela".

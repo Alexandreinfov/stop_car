@@ -2,6 +2,7 @@
 	
 	include("classeForm.php");
 	include("conexao.php");
+	include("autenticacao.php");
 
 	$parametros = null;
 	$parametros["action"] = "insere.php?tabela=OS";

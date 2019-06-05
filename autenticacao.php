@@ -1,6 +1,6 @@
 <?php
 
-	include("classeUsuario.php");
+	
 
 	
 	if(!isset($_SESSION["usuario"])){

@@ -2,6 +2,7 @@
 	
 	include("classeForm.php");
 	include("conexao.php");
+	include("autenticacao.php");
 	//include("classSelect.php");
 
 	$parametros = null;
