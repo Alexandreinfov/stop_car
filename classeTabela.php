@@ -64,7 +64,7 @@
 						echo "</tr>";					
 					}
 				}else{
-					echo "<h3><center> Não a dados registrados! </center></h3>";
+					echo "<h3><center> Não a dados registrados. </center></h3>";
 				}
 			
 			

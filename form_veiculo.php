@@ -32,7 +32,9 @@
 	for($i=1950;$i<=@date("Y");$i++){
 		$ano[] = array("label"=>$i);
 	}
-	$f->add_select("Ano",$ano,"");
+	$parametros["name"] = "Ano";
+	$parametros["label"] = "Ano Veiculo";
+	$f->add_select($parametros, $ano, null);
 
 	$parametros = "Cadastrar";
 	$f->add_button($parametros);

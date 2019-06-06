@@ -29,7 +29,7 @@
 					$o->exibe();
 				}
 			}else{
-				echo "<option>Não há $this->label cadastrados</option>";
+				echo "<option>Sem $this->label cadastrados</option>";
 			}	
 			
 			echo "</select> <br />";
