@@ -1,6 +1,9 @@
 <?php
 	include("classeCabecalho.php");
-	$c->exibe_menu();
+	include("parametros_cabecalho.php");
+	$c = new Cabecalho($parametros);
+	$c->exibe();	
+
 	include("classeForm.php");
 	include("classeLogin.php");
 	

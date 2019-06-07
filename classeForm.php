@@ -37,14 +37,16 @@
 		public function exibe(){
 			
 			echo "
-			<div>
 			<form method='$this->method' action='$this->action'>";
 						
-			
 			foreach($this->entradas as $i=>$e){				
-				echo "<div class='form-group'>";
-				$e->exibe();
-				echo "</div>";
+				echo "
+				<div class='row'>
+					<div class='form-group' col-sm-$e->col col-xs-12>";
+						$e->exibe();
+				echo "
+					</div>
+				</div>";
 			}
 			echo "<footer>
 					<div class='float-right'>

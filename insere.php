@@ -1,7 +1,12 @@
 <?php
 
 	include("classeCabecalho.php");
-	$c->exibe_menu();
+	include("parametros_cabecalho.php");
+	$c = new Cabecalho($parametros);
+	$c->exibe();
+	include("autenticacao.php");
+	$c->exibe_menu();	
+	
 	include("classeBancoDeDados.php");	
 	
 	$operacao = new BancoDeDados($conexao);

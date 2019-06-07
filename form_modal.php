@@ -2,6 +2,7 @@
 	include("classeCabecalho.php");
 	$c->exibe_menu();
 	include("classeForm.php");
+	include("classeModal.php");
 	include("classeLogin.php");
 	
 	$parametros["action"]="validacao.php";

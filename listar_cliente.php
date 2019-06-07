@@ -1,10 +1,16 @@
 <?php
 	include("classeCabecalho.php");
-	$c->exibe_menu();
+	include("parametros_cabecalho.php");
+	$c = new Cabecalho($parametros);
+	$c->exibe();
+	include("autenticacao.php");
+	$c->exibe_menu();	
 	include("classeTabela.php");
 	include("classeBancoDeDados.php");
 	
 	include("form_cliente.php");
+
+	
 
 	$tabela[]="cliente";
 
