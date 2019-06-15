@@ -4,12 +4,23 @@
 	include("conexao.php");
 	include("autenticacao.php");
 	//include("classSelect.php");
-
+	
 	$parametros = null;
 	$parametros["action"] = "insere.php?tabela=Veiculo";
 	$parametros["method"] = "post";
 	$parametros["tipoForm"] = "Veiculo";
 	$f = new Form($parametros);
+
+	$consulta = "SELECT COD_CLIENTE as value, NOME as label FROM CLIENTE";
+	$stmt = $conexao->prepare($consulta);
+	$stmt->execute();
+	$clientes = null;
+	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
+		$clientes[] = $linha;
+	}
+	$parametros["name"] = "COD_CLIENTE";
+	$parametros["label"] = "Clientes";
+	$f->add_select($parametros, $clientes, null);
 
 	$parametros = null;
 	$parametros["name"] = "placa";

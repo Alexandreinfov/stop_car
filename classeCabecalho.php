@@ -22,7 +22,6 @@
 		
 		public function exibe(){
 			session_start();
-			
 			echo "<!DOCTYPE html>
 					<html>
 					<head>
@@ -75,13 +74,8 @@ public function exibe_menu(){
 									</a>
 								</li>
 								<li>
-									<a href='listar_servico.php'>
-										Serviços
-									</a>
-								</li>
-								<li>
-									<a href='listar_produto.php'>
-										Produtos
+									<a href='listar_servico_produto.php'>
+										Serviços / Produto
 									</a>
 								</li>
 								<li>
@@ -95,10 +89,16 @@ public function exibe_menu(){
 									</a>
 								</li>
 								<li>
+									<a href='form_nota.php'>
+										Gerar nota fiscal
+									</a>
+								</li>
+								<li>
 									<a href='logout.php'>
 										Sair
 									</a>
 								</li>
+
 			                    </ul>
 			                </div>
 			            </div>
@@ -109,9 +109,19 @@ public function exibe_menu(){
 	}
 	
 	
-
+	$parametros["charset"]="utf-8";
+	$parametros["title"]="Stop Car";
+	$parametros["links"][] = "css/bootstrap.min.css";
+	$parametros["links"][] = "css/login.css";
+	$parametros["links"][] = "css/todo.css";
+	$parametros["links"][] = "css/estiloForm.css";	
+	$parametros["links"][] = "https:/fonts.googleapis.com/icon?family=Material+Icons";
+	$parametros["scripts"][] = "js/jquery-3.3.1.min.js";
+	$parametros["scripts"][] = "js/bootstrap.min.js";
+	//$parametros["scripts"][] = "js/todo.js";
 	
-	
+	$c = new Cabecalho($parametros);
+	$c->exibe();	
 	
 ?>
 

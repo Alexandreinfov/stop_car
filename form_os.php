@@ -5,7 +5,7 @@
 	include("autenticacao.php");
 
 	$parametros = null;
-	$parametros["action"] = "insere.php?tabela=OS";
+	$parametros["action"] = "insere.php?tabela=ORDEM_SERVICO";
 	$parametros["method"] = "post";
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);
@@ -17,7 +17,7 @@
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$clientes[] = $linha;
 	}
-	$parametros["name"] = "Cliente";
+	$parametros["name"] = "COD_CLIENTE";
 	$parametros["label"] = "Clientes";
 	$f->add_select($parametros, $clientes, null);
 
@@ -29,12 +29,12 @@
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$veiculos[] = $linha;
 	}
-	$parametros["name"] = "Veiculo";
+	$parametros["name"] = "COD_VEICULO";
 	$parametros["label"] = "Veículos";
 	$f->add_select($parametros, $veiculos, null);	
 
 
-	$consulta = "SELECT COD_PRODUTO as value, DESCRICAO as label FROM PRODUTO";
+	/*$consulta = "SELECT COD_PRODUTO as value, DESCRICAO as label FROM PRODUTO";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$produtos = null;
@@ -43,17 +43,17 @@
 	}
 	$parametros["name"] = "Produto";
 	$parametros["label"] = "Produtos";
-	$f->add_select($parametros, $produtos, null);
+	$f->add_select($parametros, $produtos, null);*/
 
 
-	$consulta = "SELECT COD_SERVICO as value, DESCRICAO as label FROM SERVICO";
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$servicos = null;
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$servicos[] = $linha;
 	}
-	$parametros["name"] = "Servico";
+	$parametros["name"] = "COD_SERVICO_PRODUTO";
 	$parametros["label"] = "Serviços";
 	$f->add_select($parametros, $servicos, null);
 
@@ -65,7 +65,7 @@
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$funcionarios[] = $linha;
 	}
-	$parametros["name"] = "Funcionario";
+	$parametros["name"] = "COD_FUNCIONARIO";
 	$parametros["label"] = "Funcionários";
 	$f->add_select($parametros, $funcionarios, null);
 

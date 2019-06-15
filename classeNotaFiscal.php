@@ -1,0 +1,126 @@
+<?php 
+
+	class Nota implements Exibicao{
+		private $dataAbertura;
+		//private $dataFechamento;
+		private $servico;
+		private $produto;
+		private $funcionario;
+		private $cliente;
+		private $veiculo;
+		private $status = "Finalizada";
+
+		public function __construct($parametros){
+			$this->dataAbertura = @date('d/m/Y h:i:s', strtotime($parametros["dataAbertura"]));
+			//$this->dataFechamento = $parametros["dataFechamento"];
+			$this->servico = $parametros["servico"];
+			$this->produto = $parametros["produto"];
+			$this->funcionario = $parametros["funcionario"];
+			$this->cliente = $parametros["cliente"];
+			$this->veiculo = $parametros["veiculo"];
+		}	
+
+
+
+		function exibe(){
+		echo'
+			<center><table class="printer-ticket">
+			 	<thead>
+					<tr>
+						<th class="title" colspan="3" align="center">STOP CAR</th>
+					</tr>
+					<tr>
+						<th colspan="3"  align="center">'.$this->dataAbertura.'</th>
+					</tr>
+					<tr>
+						<th colspan="3"  align="center">#
+							'.$this->cliente.'#<br />
+							000.000.000-00
+						</th>
+					</tr>
+					<tr>
+						<th class="ttu" colspan="3"  align="center">
+							<b>Cupom não fiscal</b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="top">
+						<td colspan="3"  align="center">#</td>
+					</tr>
+					<tr>
+						<td>R$7,99</td>
+						<td>2.0</td>
+						<td>R$15,98</td>
+					</tr>
+					<tr>
+						<td colspan="3">Opcional Adicicional: grande</td>
+					</tr>
+					<tr>
+						<td>R$0,33</td>
+						<td>2.0</td>
+						<td>R$0,66</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="sup ttu p--0">
+						<td colspan="3">
+							<b>Totais</b>
+						</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Sub-total</td>
+						<td align="right">R$43,60</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Taxa de serviço</td>
+						<td align="right">R$4,60</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Desconto</td>
+						<td align="right">5,00%</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Total</td>
+						<td align="right">R$45,56</td>
+					</tr>
+					<tr class="sup ttu p--0">
+						<td colspan="3">
+							<b>Pagamentos</b>
+						</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Voucher</td>
+						<td align="right">R$10,00</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Dinheiro</td>
+						<td align="right">R$10,00</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Total pago</td>
+						<td align="right">R$10,00</td>
+					</tr>
+					<tr class="ttu">
+						<td colspan="2">Troco</td>
+						<td align="right">R$0,44</td>
+					</tr>
+					<tr class="sup">
+						<td colspan="3" align="center">
+							<b>Pedido:</b>
+						</td>
+					</tr>
+					<tr class="sup">
+						<td colspan="3" align="center">
+							www.stop_car.com
+						</td>
+					</tr>
+				</tfoot>
+			</table></center>
+			</body>
+			</html>';
+
+
+		}
+	}
+?>

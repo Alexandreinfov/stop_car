@@ -1,7 +1,6 @@
 <?php
 
 	include("classeForm.php");
-	include("classeModal.php");
 	include("conexao.php");
 	include("autenticacao.php");
 	
@@ -40,14 +39,6 @@
 	$f->add_button($parametros);
 	
 	
-	$parametros=null;
-	$parametros["titulo"] = "Novo Cliente";
-	$parametros["id"] = "cadastrarCliente";
-	$m = new Modal($parametros,$f);
-
-	$p["label"]="cadastrar";
-	$p["id"]="#cadastrarCliente";
-	$b = new Button($p);
-	$b->exibe();
+	$f->exibe();
 	
 ?>

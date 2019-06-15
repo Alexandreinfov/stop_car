@@ -3,24 +3,22 @@
 	$c->exibe_menu();
 	include("classeTabela.php");
 	include("classeBancoDeDados.php");
-	
-	include("form_cliente.php");
 
-	$tabela[]="cliente";
+	include("form_servico_produto.php");
+
+	$tabela[]="servico_produto";
 
 	$bd = new BancoDeDados($conexao);
 	
-	$coluna[]= "COD_CLIENTE AS Codigo";
-	$coluna[]= "Nome";
-	$coluna[]= "CPF";
-	$coluna[]= "Endereco";
-	$coluna[]= "Telefone";
+	$coluna[]= "COD_SERVICO_PRODUTO AS Codigo";
+	$coluna[]= "Descricao";
+	$coluna[]= "Preco";
 	
 	$condicao = null;
 	$ordenacao = null;
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
 
-	$t = new Tabela($m,"cliente",0, null);
+	$t = new Tabela($m,"servico_produto",0, null);
 	
 	$t->exibe();
 ?>

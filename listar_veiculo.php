@@ -9,8 +9,9 @@
 	$tabela[]="veiculo";
 
 	$bd = new BancoDeDados($conexao);
-	
+	//$coluna[]=  "SELECT COD_CLIENTE as value, NOME as label FROM CLIENTE";
 	$coluna[]= "COD_VEICULO AS Codigo";
+	$coluna[]= "Placa";
 	$coluna[]= "Placa";
 	$coluna[]= "Modelo";
 	$coluna[]= "Marca";
