@@ -94,6 +94,11 @@ public function exibe_menu(){
 									</a>
 								</li>
 								<li>
+									<a href='form_pagamento.php'>
+										Pagamento
+									</a>
+								</li>
+									<li>
 									<a href='logout.php'>
 										Sair
 									</a>
