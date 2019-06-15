@@ -89,7 +89,7 @@ public function exibe_menu(){
 									</a>
 								</li>
 								<li>
-									<a href='form_nota.php'>
+									<a href='lista_nota.php'>
 										Gerar nota fiscal
 									</a>
 								</li>

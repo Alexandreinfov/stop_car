@@ -46,7 +46,7 @@
 	$f->add_select($parametros, $produtos, null);*/
 
 
-	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO";
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 's'";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$servicos = null;
@@ -56,6 +56,18 @@
 	$parametros["name"] = "COD_SERVICO_PRODUTO";
 	$parametros["label"] = "Serviços";
 	$f->add_select($parametros, $servicos, null);
+
+
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'p'";
+	$stmt = $conexao->prepare($consulta);
+	$stmt->execute();
+	$produtos = null;
+	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
+		$produtos[] = $linha;
+	}
+	$parametros["name"] = "COD_SERVICO_PRODUTO";
+	$parametros["label"] = "Produtos";
+	$f->add_select($parametros, $produtos, null);
 
 
 	$consulta = "SELECT COD_FUNCIONARIO as value, NOME as label FROM FUNCIONARIO";
