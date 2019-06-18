@@ -1,9 +1,9 @@
-input, select{
+input.text, input.number, select{
 	margin: 0 10px 0 10px;
 	width: 250px;
 }
 
-button{
+button, label{
 	margin: 0 10px 0 10px;
 }
 

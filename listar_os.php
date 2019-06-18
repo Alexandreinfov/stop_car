@@ -11,15 +11,11 @@
 	$bd = new BancoDeDados($conexao);
 	
 	$coluna[]= "COD_OS AS Codigo";
-	$coluna[]= "COD_VENDA";
 	$coluna[]= "DATA_ABERTURA";
 	$coluna[]= "DATA_FECHAMENTO";
 	$coluna[]= "COD_FUNCIONARIO";
 	$coluna[]= "COD_CLIENTE";
 	$coluna[]= "COD_VEICULO";
-	$coluna[]= "COD_SERVICO";
-	$coluna[]= "COD_PRODUTO";
-	$coluna[]= "PAGAMENTO";
 	$coluna[]= "STATUS";
 	
 	$condicao = null;
@@ -34,5 +30,6 @@
 	<script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/alterar_cidade.js"></script>
+     <script src="js/orderm_servico.js"></script>
 </body>
 </html>

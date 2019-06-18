@@ -38,20 +38,15 @@
 			
 			echo "
 			<div>
-			<form method='$this->method' action='$this->action'>";
-						
-			
-			foreach($this->entradas as $i=>$e){				
-				echo "<div class='form-group'>";
-				$e->exibe();
-				echo "</div>";
-			}
-			echo "<footer>
-					<div class='float-right'>
-						<button type='submit'
-						class='btn btn-primary'>Entrar</button>
-					</div>
-				</footer>
+				<form method='$this->method' action='$this->action'>";
+							
+				
+				foreach($this->entradas as $i=>$e){				
+					echo "<div class='form-group'>";
+					$e->exibe();
+					echo "</div>";
+				}
+				echo "
 				</form>";
 		}
 		

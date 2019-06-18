@@ -34,6 +34,7 @@
 	$parametros["label"] = "Clientes";
 	$f->add_select($parametros, $clientes, null);
 
+
 	//SELECT VEICULO
 	$consulta = "SELECT COD_VEICULO as value, PLACA as label FROM VEICULO";
 	$stmt = $conexao->prepare($consulta);
@@ -46,29 +47,27 @@
 	$parametros["label"] = "Veículos";
 	$f->add_select($parametros, $veiculos, null);
 
-	//SELECT STATUS
-	//$status[] = array("label"=>"Orçamento", "label"=>"Aprovado", "label"=>"Finalizado");
-	$status[]["label"] = "Orçamento";
-	$status[]["label"] = "Aprovado";
-	$status[]["label"] = "Finalizado";
-	$parametros["name"] = "STATUS";
-	$parametros["label"] = "Status O.S";
-	$f->add_select($parametros, $status, null);	
-
-
-	/*$consulta = "SELECT COD_PRODUTO as value, DESCRICAO as label FROM PRODUTO";
+	//SELECT PRODUTO
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'p'";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$produtos = null;
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$produtos[] = $linha;
 	}
-	$parametros["name"] = "Produto";
+	$parametros["name"] = "COD_SERVICO_PRODUTO";
 	$parametros["label"] = "Produtos";
-	$f->add_select($parametros, $produtos, null);*/
+	$f->add_select($parametros, $produtos, null);
 
+	//CAMPO QTDE PRODUTO
+	$parametros = null;
+	$parametros["name"] = "qtde";
+	$parametros["type"] = "number";
+	$parametros["placeholder"] = "Quantidade Produto"; 
+	$f->add_input($parametros); //adcionando os parametros passados para o add_input.
 
-	/*$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 's'";
+	//SELECT SERVIÇO
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 's'";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$servicos = null;
@@ -79,21 +78,12 @@
 	$parametros["label"] = "Serviços";
 	$f->add_select($parametros, $servicos, null);
 
-
-	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'p'";
-	$stmt = $conexao->prepare($consulta);
-	$stmt->execute();
-	$produtos = null;
-	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
-		$produtos[] = $linha;
-	}
-	$parametros["name"] = "COD_SERVICO_PRODUTO";
-	$parametros["label"] = "Produtos";
-	$f->add_select($parametros, $produtos, null);*/
-
-
-	$parametros = "Cadastrar";
-	$f->add_button($parametros);
+	$parametros=null;
+	$parametros["value"] = "Cadastrar";
+	$parametros["type"] = "button";
+	$parametros["name"] = "cadastrar";
+	
+	$f->add_input($parametros);
 
 	$f->exibe();
 ?>

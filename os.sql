@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 15-Jun-2019 às 17:13
+-- Data de Criação: 18-Jun-2019 às 23:11
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -80,39 +80,61 @@ CREATE TABLE IF NOT EXISTS `ordem_servico` (
   `COD_OS` int(11) NOT NULL AUTO_INCREMENT,
   `DATA_ABERTURA` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `DATA_FECHAMENTO` datetime DEFAULT NULL,
-  `COD_SERVICO_PRODUTO` int(6) NOT NULL,
   `COD_FUNCIONARIO` int(11) NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `COD_VEICULO` int(11) NOT NULL,
-  `STATUS` enum('aberto','fechada') NOT NULL DEFAULT 'aberto',
+  `STATUS` enum('orçamento','aprovado','finalizado','faturado') NOT NULL DEFAULT 'orçamento',
   PRIMARY KEY (`COD_OS`),
   KEY `COD_FUNCIONARIO` (`COD_FUNCIONARIO`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `COD_VEICULO` (`COD_VEICULO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `ordem_servico`
 --
 
-INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_SERVICO_PRODUTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `STATUS`) VALUES
-(1, '2019-06-12 20:13:24', NULL, 3, 1, 1, 5, 'aberto'),
-(2, '2019-06-12 21:31:10', NULL, 10, 1, 1, 7, 'aberto');
+INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `STATUS`) VALUES
+(4, '2019-06-17 19:30:32', NULL, 1, 1, 18, ''),
+(5, '2019-06-17 19:30:41', NULL, 1, 1, 5, ''),
+(6, '2019-06-17 20:35:52', NULL, 1, 2, 18, 'orçamento'),
+(7, '2019-06-17 20:42:37', NULL, 1, 1, 5, 'orçamento'),
+(8, '2019-06-17 20:42:41', NULL, 1, 1, 5, 'orçamento'),
+(9, '2019-06-17 21:37:03', NULL, 1, 1, 19, 'orçamento'),
+(10, '2019-06-17 21:37:06', NULL, 1, 1, 19, 'orçamento'),
+(11, '2019-06-17 21:39:46', NULL, 1, 1, 7, 'orçamento'),
+(15, '2019-06-17 21:46:26', NULL, 1, 1, 5, 'orçamento'),
+(17, '2019-06-17 21:46:54', NULL, 1, 2, 18, 'orçamento'),
+(18, '2019-06-17 21:56:56', NULL, 1, 1, 18, 'orçamento'),
+(20, '2019-06-17 21:57:34', NULL, 1, 1, 18, 'orçamento'),
+(21, '2019-06-17 22:01:46', NULL, 1, 1, 18, 'orçamento'),
+(22, '2019-06-17 22:03:24', NULL, 1, 2, 17, 'orçamento'),
+(23, '2019-06-17 22:04:34', NULL, 1, 1, 18, 'orçamento'),
+(24, '2019-06-17 22:22:26', NULL, 1, 1, 7, 'orçamento'),
+(26, '2019-06-17 22:23:16', NULL, 1, 1, 5, 'orçamento'),
+(27, '2019-06-17 22:23:18', NULL, 1, 1, 5, 'orçamento'),
+(28, '2019-06-17 22:24:04', NULL, 1, 1, 5, 'orçamento'),
+(29, '2019-06-17 22:24:09', NULL, 1, 1, 5, 'orçamento'),
+(30, '2019-06-17 22:24:09', NULL, 1, 1, 5, 'orçamento'),
+(31, '2019-06-17 22:24:10', NULL, 1, 1, 5, 'orçamento'),
+(32, '2019-06-17 22:25:16', NULL, 1, 1, 18, 'orçamento'),
+(33, '2019-06-17 22:25:52', NULL, 1, 1, 7, 'orçamento'),
+(34, '2019-06-17 22:27:58', NULL, 1, 1, 18, 'orçamento');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagamento`
+-- Estrutura da tabela `os_item`
 --
 
-CREATE TABLE IF NOT EXISTS `pagamento` (
+CREATE TABLE IF NOT EXISTS `os_item` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `COD_OS` int(11) NOT NULL,
-  `COD_TIPO` int(11) DEFAULT NULL,
-  `VALOR` decimal(8,2) DEFAULT '0.00',
-  `STATUS` enum('pendente','pago') NOT NULL DEFAULT 'pendente',
-  PRIMARY KEY (`COD_OS`),
-  KEY `COD_TIPO` (`COD_TIPO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `COD_ITEM` int(11) DEFAULT NULL,
+  `QTDE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `COD_OS` (`COD_OS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -126,31 +148,18 @@ CREATE TABLE IF NOT EXISTS `servico_produto` (
   `DESCRICAO` varchar(50) NOT NULL,
   `PRECO` decimal(8,2) NOT NULL,
   PRIMARY KEY (`COD_SERVICO_PRODUTO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Extraindo dados da tabela `servico_produto`
 --
 
 INSERT INTO `servico_produto` (`COD_SERVICO_PRODUTO`, `TIPO`, `DESCRICAO`, `PRECO`) VALUES
-(1, '', 'asdds', '10.00'),
-(2, 'p', 'asdds', '10.00'),
-(3, 's', 'hbhj', '15247.00'),
-(4, 's', 'hbhj', '15247.00'),
-(5, 's', 'hbhj', '15247.00'),
-(6, 's', 'hbhj', '15247.00'),
-(7, 's', 'hbhj', '15247.00'),
-(8, 's', 'OLA', '1.00'),
-(9, 's', 'OLA', '1.00'),
-(10, 'p', 'OLAaaa', '54.00'),
-(11, 'p', 'zx', '0.00'),
-(12, 's', 'zx', '0.00'),
-(13, 'p', 'zx', '0.00'),
-(14, 'p', 'zx', '0.00'),
-(15, 'p', 'zx', '0.00'),
-(16, 'p', 'zx', '0.00'),
-(17, 'p', 'zx', '0.00'),
-(18, 'p', 'zx', '0.00');
+(19, 's', 'PNEU', '120.78'),
+(20, 's', 'RODA', '987.98'),
+(21, 'p', 'TROCA DE OLEO', '11.78'),
+(22, 'p', 'BALANCEAMENTO', '300.98'),
+(23, 'p', 'xfdg', '45.00');
 
 -- --------------------------------------------------------
 
@@ -161,8 +170,17 @@ INSERT INTO `servico_produto` (`COD_SERVICO_PRODUTO`, `TIPO`, `DESCRICAO`, `PREC
 CREATE TABLE IF NOT EXISTS `tipo_pagamento` (
   `COD_TIPO` int(11) NOT NULL AUTO_INCREMENT,
   `DESCRICAO_TIPO` varchar(30) NOT NULL,
+  `PARCELAS` int(11) NOT NULL,
   PRIMARY KEY (`COD_TIPO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `tipo_pagamento`
+--
+
+INSERT INTO `tipo_pagamento` (`COD_TIPO`, `DESCRICAO_TIPO`, `PARCELAS`) VALUES
+(4, 'CARTAO', 0),
+(5, 'DINHEIRO', 0);
 
 -- --------------------------------------------------------
 
@@ -225,13 +243,14 @@ INSERT INTO `veiculo` (`COD_VEICULO`, `PLACA`, `MODELO`, `MARCA`, `ANO`, `COD_CL
 
 CREATE TABLE IF NOT EXISTS `venda` (
   `COD_VENDA` int(11) NOT NULL AUTO_INCREMENT,
+  `TIPO_PAGAMENTO` int(11) NOT NULL,
   `COD_OS` int(6) NOT NULL,
-  `COD_SERVICO_PRODUTO` int(6) NOT NULL,
-  `QUANTIDADE` int(11) NOT NULL DEFAULT '1',
-  `VALOR` decimal(8,2) DEFAULT NULL,
+  `COD_OS_ITEM` int(6) NOT NULL,
+  `VALOR_TOTAL` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`COD_VENDA`),
   KEY `COD_OS` (`COD_OS`),
-  KEY `COD_SERVICO_PRODUTO` (`COD_SERVICO_PRODUTO`)
+  KEY `COD_SERVICO_PRODUTO` (`COD_OS_ITEM`),
+  KEY `TIPO_PAGAMENTO` (`TIPO_PAGAMENTO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -247,11 +266,10 @@ ALTER TABLE `ordem_servico`
   ADD CONSTRAINT `ordem_servico_ibfk_3` FOREIGN KEY (`COD_VEICULO`) REFERENCES `veiculo` (`COD_VEICULO`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `pagamento`
+-- Limitadores para a tabela `os_item`
 --
-ALTER TABLE `pagamento`
-  ADD CONSTRAINT `pagamento_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `pagamento_ibfk_2` FOREIGN KEY (`COD_TIPO`) REFERENCES `tipo_pagamento` (`COD_TIPO`) ON UPDATE CASCADE;
+ALTER TABLE `os_item`
+  ADD CONSTRAINT `os_item_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`);
 
 --
 -- Limitadores para a tabela `veiculo`
@@ -264,7 +282,8 @@ ALTER TABLE `veiculo`
 --
 ALTER TABLE `venda`
   ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`COD_SERVICO_PRODUTO`) REFERENCES `servico_produto` (`COD_SERVICO_PRODUTO`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`COD_OS_ITEM`) REFERENCES `servico_produto` (`COD_SERVICO_PRODUTO`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `venda_ibfk_3` FOREIGN KEY (`TIPO_PAGAMENTO`) REFERENCES `tipo_pagamento` (`COD_TIPO`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -9,6 +9,8 @@
 	include("conexao.php");
 	include("autenticacao.php");
 
+	
+
 	$parametros = null;
 	$parametros["action"] = "insere.php?tabela=tipo_pagamento";
 	$parametros["method"] = "post";
@@ -18,12 +20,12 @@
 	$parametros = null;
 	$parametros["name"] = "DESCRICAO_TIPO";
 	$parametros["type"] = "radio";
-	$parametros["opcoes"] = array("cartao"=>"Cartão de crédito","boleto"=>"Boleto","debito"=>"Debito");
-	$parametros["label"] = "tipo de pagamento";
+	$parametros["opcoes"] = array("cartao"=>"Cartão de crédito","boleto"=>"Boleto","prazo"=>"A Prazo","crediario"=>"Crediário");
+	$parametros["label"] = "Forma de Pagamento";
 	$f->add_inputOpcoes($parametros);
 
 	for($i=1;$i<=10;$i++){
-		$parcela[] = array("label"=>$i."X  sem juro");
+		$parcela[] = array("label"=>$i."X  sem juros");
 	}
 	$parametros["name"] = "PARCELAS";
 	$parametros["label"] = "Parcelas";

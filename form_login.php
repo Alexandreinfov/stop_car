@@ -37,7 +37,11 @@
 	$login->exibe();
 
 ?>
-
+	<script>
+		$("button[type='submit']").click(function(){
+			$("form[action='validacao.php']").submit();
+		});
+	</script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/validaform.min.js"></script>

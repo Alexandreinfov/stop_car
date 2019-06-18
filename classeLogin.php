@@ -26,6 +26,12 @@
 					<button class='btn btn-default btn-cadastrar'
 					data-toggle='modal' data-target='#NovoUsuario'>
 					Cadastrar</button>
+					
+						<div>
+							<button type='submit'
+							class='btn btn-primary'>Entrar</button>
+						</div>
+					
 				</div>";
 		}
 		
