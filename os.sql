@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 18-Jun-2019 às 23:11
+-- Data de Criação: 19-Jun-2019 às 00:53
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -31,20 +31,22 @@ USE `os`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) NOT NULL,
-  `CPF` int(11) NOT NULL,
+  `CPF` varchar(50) NOT NULL,
   `ENDERECO` varchar(80) NOT NULL,
   `TELEFONE` varchar(20) NOT NULL,
   PRIMARY KEY (`COD_CLIENTE`),
   UNIQUE KEY `CPF` (`CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
 INSERT INTO `cliente` (`COD_CLIENTE`, `NOME`, `CPF`, `ENDERECO`, `TELEFONE`) VALUES
-(1, 'Filipe', 2147483647, '465sd45df64sdf', '445212525'),
-(2, 'adas', 548575, 'fgfdzg', '75741');
+(3, 'Andrea', '401.321.70-96', 'R. Wallace Landal', '(16)36415859'),
+(4, 'Filipe', '369.321.70-50', '\nR. Antônio Matar ', '(21)3326585'),
+(5, 'Jose', '101.341.10-10', 'R. dos Oitis', '(11)3335939'),
+(6, 'Gabrila', '401.301.20-30', 'Rua Sergipe', '(16)3334587');
 
 -- --------------------------------------------------------
 
@@ -55,20 +57,20 @@ INSERT INTO `cliente` (`COD_CLIENTE`, `NOME`, `CPF`, `ENDERECO`, `TELEFONE`) VAL
 CREATE TABLE IF NOT EXISTS `funcionario` (
   `COD_FUNCIONARIO` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) NOT NULL,
-  `CPF` int(11) NOT NULL,
+  `CPF` varchar(50) NOT NULL,
   `ENDERECO` varchar(50) NOT NULL,
   `TELEFONE` varchar(20) NOT NULL,
   `SALARIO` decimal(20,0) NOT NULL,
   PRIMARY KEY (`COD_FUNCIONARIO`),
   UNIQUE KEY `CPF` (`CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`COD_FUNCIONARIO`, `NOME`, `CPF`, `ENDERECO`, `TELEFONE`, `SALARIO`) VALUES
-(1, 'asdre', 546, 'nkinj', '9926486165', '53436');
+(2, 'Rogerio', '333.321.70-33', 'Rua Bahia', '(16)33336565', '2000');
 
 -- --------------------------------------------------------
 
@@ -88,39 +90,22 @@ CREATE TABLE IF NOT EXISTS `ordem_servico` (
   KEY `COD_FUNCIONARIO` (`COD_FUNCIONARIO`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `COD_VEICULO` (`COD_VEICULO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+
+-- --------------------------------------------------------
 
 --
--- Extraindo dados da tabela `ordem_servico`
+-- Stand-in structure for view `os`
 --
-
-INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `STATUS`) VALUES
-(4, '2019-06-17 19:30:32', NULL, 1, 1, 18, ''),
-(5, '2019-06-17 19:30:41', NULL, 1, 1, 5, ''),
-(6, '2019-06-17 20:35:52', NULL, 1, 2, 18, 'orçamento'),
-(7, '2019-06-17 20:42:37', NULL, 1, 1, 5, 'orçamento'),
-(8, '2019-06-17 20:42:41', NULL, 1, 1, 5, 'orçamento'),
-(9, '2019-06-17 21:37:03', NULL, 1, 1, 19, 'orçamento'),
-(10, '2019-06-17 21:37:06', NULL, 1, 1, 19, 'orçamento'),
-(11, '2019-06-17 21:39:46', NULL, 1, 1, 7, 'orçamento'),
-(15, '2019-06-17 21:46:26', NULL, 1, 1, 5, 'orçamento'),
-(17, '2019-06-17 21:46:54', NULL, 1, 2, 18, 'orçamento'),
-(18, '2019-06-17 21:56:56', NULL, 1, 1, 18, 'orçamento'),
-(20, '2019-06-17 21:57:34', NULL, 1, 1, 18, 'orçamento'),
-(21, '2019-06-17 22:01:46', NULL, 1, 1, 18, 'orçamento'),
-(22, '2019-06-17 22:03:24', NULL, 1, 2, 17, 'orçamento'),
-(23, '2019-06-17 22:04:34', NULL, 1, 1, 18, 'orçamento'),
-(24, '2019-06-17 22:22:26', NULL, 1, 1, 7, 'orçamento'),
-(26, '2019-06-17 22:23:16', NULL, 1, 1, 5, 'orçamento'),
-(27, '2019-06-17 22:23:18', NULL, 1, 1, 5, 'orçamento'),
-(28, '2019-06-17 22:24:04', NULL, 1, 1, 5, 'orçamento'),
-(29, '2019-06-17 22:24:09', NULL, 1, 1, 5, 'orçamento'),
-(30, '2019-06-17 22:24:09', NULL, 1, 1, 5, 'orçamento'),
-(31, '2019-06-17 22:24:10', NULL, 1, 1, 5, 'orçamento'),
-(32, '2019-06-17 22:25:16', NULL, 1, 1, 18, 'orçamento'),
-(33, '2019-06-17 22:25:52', NULL, 1, 1, 7, 'orçamento'),
-(34, '2019-06-17 22:27:58', NULL, 1, 1, 18, 'orçamento');
-
+CREATE TABLE IF NOT EXISTS `os` (
+`CODIGO` int(11)
+,`DATA ABERTURA` datetime
+,`DATA FECHAMENTO` datetime
+,`FUNCIONARIO` varchar(50)
+,`CLIENTE` varchar(50)
+,`PLACA` varchar(7)
+,`STATUS` enum('orçamento','aprovado','finalizado','faturado')
+);
 -- --------------------------------------------------------
 
 --
@@ -133,8 +118,10 @@ CREATE TABLE IF NOT EXISTS `os_item` (
   `COD_ITEM` int(11) DEFAULT NULL,
   `QTDE` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `COD_OS` (`COD_OS`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `COD_OS` (`COD_OS`),
+  KEY `COD_ITEM` (`COD_ITEM`),
+  KEY `COD_ITEM_2` (`COD_ITEM`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 -- --------------------------------------------------------
 
@@ -148,18 +135,17 @@ CREATE TABLE IF NOT EXISTS `servico_produto` (
   `DESCRICAO` varchar(50) NOT NULL,
   `PRECO` decimal(8,2) NOT NULL,
   PRIMARY KEY (`COD_SERVICO_PRODUTO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `servico_produto`
 --
 
 INSERT INTO `servico_produto` (`COD_SERVICO_PRODUTO`, `TIPO`, `DESCRICAO`, `PRECO`) VALUES
-(19, 's', 'PNEU', '120.78'),
-(20, 's', 'RODA', '987.98'),
-(21, 'p', 'TROCA DE OLEO', '11.78'),
-(22, 'p', 'BALANCEAMENTO', '300.98'),
-(23, 'p', 'xfdg', '45.00');
+(24, 's', 'PNEU', '120.78'),
+(25, 's', 'RODA', '987.98'),
+(26, 'p', 'TROCA DE OLEO', '11.78'),
+(27, 'p', 'BALANCEAMENTO', '300.98');
 
 -- --------------------------------------------------------
 
@@ -172,15 +158,15 @@ CREATE TABLE IF NOT EXISTS `tipo_pagamento` (
   `DESCRICAO_TIPO` varchar(30) NOT NULL,
   `PARCELAS` int(11) NOT NULL,
   PRIMARY KEY (`COD_TIPO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `tipo_pagamento`
 --
 
 INSERT INTO `tipo_pagamento` (`COD_TIPO`, `DESCRICAO_TIPO`, `PARCELAS`) VALUES
-(4, 'CARTAO', 0),
-(5, 'DINHEIRO', 0);
+(6, 'CARTAO', 0),
+(7, 'DINHEIRO', 0);
 
 -- --------------------------------------------------------
 
@@ -222,18 +208,15 @@ CREATE TABLE IF NOT EXISTS `veiculo` (
   PRIMARY KEY (`COD_VEICULO`),
   UNIQUE KEY `PLACA` (`PLACA`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Extraindo dados da tabela `veiculo`
 --
 
 INSERT INTO `veiculo` (`COD_VEICULO`, `PLACA`, `MODELO`, `MARCA`, `ANO`, `COD_CLIENTE`) VALUES
-(5, 'ale1506', 'ford', 'fusca', 1951, 1),
-(7, 'ale758', 'ford', 'fusca', 1951, 1),
-(17, 'as5844', 'ASD', 'SAD', 1968, 1),
-(18, 'ABP0987', 'HILUX', 'TOYOTA', 2019, 1),
-(19, 'ATT0101', 'TORO', 'FIAT', 2018, 2);
+(28, 'ABP0987', 'HILUX', 'TOYOTA', 2019, 3),
+(29, 'ATT0101', 'TORO', 'FIAT', 2018, 6);
 
 -- --------------------------------------------------------
 
@@ -252,6 +235,15 @@ CREATE TABLE IF NOT EXISTS `venda` (
   KEY `COD_SERVICO_PRODUTO` (`COD_OS_ITEM`),
   KEY `TIPO_PAGAMENTO` (`TIPO_PAGAMENTO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `os`
+--
+DROP TABLE IF EXISTS `os`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `os` AS select `COD_OS` AS `CODIGO`,`DATA_ABERTURA` AS `DATA ABERTURA`,`DATA_FECHAMENTO` AS `DATA FECHAMENTO`,`f`.`NOME` AS `FUNCIONARIO`,`c`.`NOME` AS `CLIENTE`,`v`.`PLACA` AS `PLACA`,`STATUS` AS `STATUS` from (((`ordem_servico` `os` join `cliente` `c` on((`COD_CLIENTE` = `c`.`COD_CLIENTE`))) join `funcionario` `f` on((`COD_FUNCIONARIO` = `f`.`COD_FUNCIONARIO`))) join `veiculo` `v` on((`COD_VEICULO` = `v`.`COD_VEICULO`)));
 
 --
 -- Constraints for dumped tables

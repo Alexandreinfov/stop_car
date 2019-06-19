@@ -14,26 +14,26 @@ $(function(){
 		.done(function(data){
 			cod_os = data;
 			
-			
 			var url = 'insere_os.php?tabela=os_item';
 
-			var cod_item = $("select[name='COD_SERVICO']").val();
-			var qtde = $("select[name='QTDE']").val();
+			var cod_item = $("select[name='PRODUTO']").val();
+			var qtde = $("input[name='QTDE']").val();
 
 			var parametros = {cod_os: cod_os, cod_item: cod_item, qtde:qtde};
 
 			$.post(url,parametros)
 			.done(function(data){
+				cod_os = data;
 				var url = 'insere_os.php?tabela=os_item';
 
-				var cod_item = $("select[name='COD_SERVICO_PRODUTO']").val();
-				var qtde = $("select[name='QTDE']").val();
+				var cod_item = $("select[name='SERVICO']").val();
 
-				var parametros = {cod_os: cod_os, cod_item: cod_item, qtde:qtde};
+				var parametros = {cod_os: cod_os, cod_item: cod_item};
 
 				$.post(url,parametros)
 				.done(function(data){
-					alert();
+					cod_os = data;
+					alert("Ordem de serviço "+cod_os+" cadastrada com sucesso.");
 				})
 				.fail(function(){
 					alert("Erro na conexão com o servidor");

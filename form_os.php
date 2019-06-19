@@ -55,13 +55,13 @@
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$produtos[] = $linha;
 	}
-	$parametros["name"] = "COD_SERVICO_PRODUTO";
+	$parametros["name"] = "PRODUTO";
 	$parametros["label"] = "Produtos";
 	$f->add_select($parametros, $produtos, null);
 
 	//CAMPO QTDE PRODUTO
 	$parametros = null;
-	$parametros["name"] = "qtde";
+	$parametros["name"] = "QTDE";
 	$parametros["type"] = "number";
 	$parametros["placeholder"] = "Quantidade Produto"; 
 	$f->add_input($parametros); //adcionando os parametros passados para o add_input.
@@ -74,7 +74,7 @@
 	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
 		$servicos[] = $linha;
 	}
-	$parametros["name"] = "COD_SERVICO_PRODUTO";
+	$parametros["name"] = "SERVICO";
 	$parametros["label"] = "Serviços";
 	$f->add_select($parametros, $servicos, null);
 

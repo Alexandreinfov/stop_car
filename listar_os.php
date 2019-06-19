@@ -6,23 +6,17 @@
 
 	include("form_os.php");
 
-	$tabela[]="ordem_servico";
+	$tabela[]="os";
 
 	$bd = new BancoDeDados($conexao);
 	
-	$coluna[]= "COD_OS AS Codigo";
-	$coluna[]= "DATA_ABERTURA";
-	$coluna[]= "DATA_FECHAMENTO";
-	$coluna[]= "COD_FUNCIONARIO";
-	$coluna[]= "COD_CLIENTE";
-	$coluna[]= "COD_VEICULO";
-	$coluna[]= "STATUS";
+	$coluna[]= "*";
 	
 	$condicao = null;
 	$ordenacao = null;
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
 
-	$t = new Tabela($m,"ordem_servico",0, null);
+	$t = new Tabela($m,"os",0, null);
 	
 	$t->exibe();
 ?>
