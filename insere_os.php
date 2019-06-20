@@ -13,7 +13,11 @@
 
 	$r = $operacao->select($tabela,$coluna,$condicao,$ordem);
 		
-	$cod_os = $r[0]["id"];
+	$cod_os[] = $r[0]["id"];
+	$cod_os[] = 10;
+	//$cod_os[] = $r[0]["id"];
 
-	echo $cod_os;
+	foreach ($cod_os as $i => $v) {
+		echo $cod_os[$v];	
+	}
 ?>

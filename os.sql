@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 19-Jun-2019 às 00:53
+-- Data de Criação: 20-Jun-2019 às 17:16
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -85,12 +85,50 @@ CREATE TABLE IF NOT EXISTS `ordem_servico` (
   `COD_FUNCIONARIO` int(11) NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `COD_VEICULO` int(11) NOT NULL,
+  `TOTAL_OS` double(8,2) NOT NULL,
   `STATUS` enum('orçamento','aprovado','finalizado','faturado') NOT NULL DEFAULT 'orçamento',
   PRIMARY KEY (`COD_OS`),
   KEY `COD_FUNCIONARIO` (`COD_FUNCIONARIO`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `COD_VEICULO` (`COD_VEICULO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Extraindo dados da tabela `ordem_servico`
+--
+
+INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `TOTAL_OS`, `STATUS`) VALUES
+(1, '2019-06-18 23:30:06', NULL, 2, 5, 29, 0.00, 'orçamento'),
+(2, '2019-06-18 23:30:08', NULL, 2, 5, 29, 0.00, 'orçamento'),
+(3, '2019-06-18 23:30:58', NULL, 2, 3, 28, 0.00, 'orçamento'),
+(4, '2019-06-18 23:31:43', NULL, 2, 3, 29, 0.00, 'orçamento'),
+(5, '2019-06-18 23:33:11', NULL, 2, 3, 28, 0.00, 'orçamento'),
+(6, '2019-06-18 23:34:56', NULL, 2, 3, 28, 0.00, 'orçamento'),
+(7, '2019-06-18 23:35:41', NULL, 2, 3, 28, 0.00, 'orçamento'),
+(8, '2019-06-18 23:48:14', NULL, 2, 4, 28, 0.00, 'orçamento'),
+(9, '2019-06-18 23:50:21', NULL, 2, 3, 28, 0.00, 'orçamento'),
+(10, '2019-06-18 23:51:08', NULL, 2, 4, 28, 0.00, 'orçamento'),
+(11, '2019-06-18 23:58:04', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(12, '2019-06-18 23:58:40', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(13, '2019-06-19 00:02:59', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(14, '2019-06-19 00:03:33', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(15, '2019-06-19 00:04:20', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(16, '2019-06-19 00:04:21', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(17, '2019-06-19 00:04:22', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(18, '2019-06-19 00:04:39', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(19, '2019-06-19 00:06:38', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(20, '2019-06-19 00:08:19', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(21, '2019-06-19 00:16:54', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(22, '2019-06-19 00:18:08', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(23, '2019-06-19 00:20:07', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(24, '2019-06-19 00:22:38', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(25, '2019-06-19 00:23:01', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(26, '2019-06-19 00:23:29', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(27, '2019-06-19 00:25:10', NULL, 0, 0, 0, 0.00, 'orçamento'),
+(28, '2019-06-19 00:41:05', NULL, 2, 4, 28, 0.00, 'orçamento'),
+(29, '2019-06-19 00:42:01', NULL, 2, 4, 29, 0.00, 'orçamento'),
+(30, '2019-06-19 00:42:31', NULL, 2, 4, 28, 0.00, 'orçamento'),
+(31, '2019-06-19 00:48:22', NULL, 0, 0, 0, 0.00, 'orçamento');
 
 -- --------------------------------------------------------
 
@@ -121,7 +159,49 @@ CREATE TABLE IF NOT EXISTS `os_item` (
   KEY `COD_OS` (`COD_OS`),
   KEY `COD_ITEM` (`COD_ITEM`),
   KEY `COD_ITEM_2` (`COD_ITEM`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Extraindo dados da tabela `os_item`
+--
+
+INSERT INTO `os_item` (`ID`, `COD_OS`, `COD_ITEM`, `QTDE`) VALUES
+(1, 0, 26, 0),
+(2, 0, 0, NULL),
+(3, 0, 26, 1),
+(4, 0, 24, NULL),
+(5, 0, 26, 2),
+(6, 0, 24, NULL),
+(7, 12, 0, 0),
+(8, 12, 0, NULL),
+(9, 0, 0, 0),
+(10, 0, 0, NULL),
+(11, 0, 0, 0),
+(12, 0, 0, NULL),
+(13, 0, 0, 0),
+(14, 0, 0, NULL),
+(15, 0, 0, 0),
+(16, 0, 0, NULL),
+(17, 0, 0, 0),
+(18, 0, 0, NULL),
+(19, 0, 0, 0),
+(20, 0, 0, NULL),
+(21, 0, 0, 0),
+(22, 0, 0, NULL),
+(23, 2525, 0, 0),
+(24, 2525, 0, NULL),
+(25, 26, 0, 0),
+(26, 26, 0, NULL),
+(27, 2710, 0, 0),
+(28, 2710, 0, NULL),
+(29, 10, 27, 2),
+(30, 10, 25, NULL),
+(31, 10, 26, 2),
+(32, 10, 25, NULL),
+(33, 0, 26, 3),
+(34, 0, 24, NULL),
+(35, 0, 0, 0),
+(36, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -183,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL,
   `permissao` int(1) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -228,11 +308,9 @@ CREATE TABLE IF NOT EXISTS `venda` (
   `COD_VENDA` int(11) NOT NULL AUTO_INCREMENT,
   `TIPO_PAGAMENTO` int(11) NOT NULL,
   `COD_OS` int(6) NOT NULL,
-  `COD_OS_ITEM` int(6) NOT NULL,
   `VALOR_TOTAL` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`COD_VENDA`),
   KEY `COD_OS` (`COD_OS`),
-  KEY `COD_SERVICO_PRODUTO` (`COD_OS_ITEM`),
   KEY `TIPO_PAGAMENTO` (`TIPO_PAGAMENTO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -244,38 +322,6 @@ CREATE TABLE IF NOT EXISTS `venda` (
 DROP TABLE IF EXISTS `os`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `os` AS select `COD_OS` AS `CODIGO`,`DATA_ABERTURA` AS `DATA ABERTURA`,`DATA_FECHAMENTO` AS `DATA FECHAMENTO`,`f`.`NOME` AS `FUNCIONARIO`,`c`.`NOME` AS `CLIENTE`,`v`.`PLACA` AS `PLACA`,`STATUS` AS `STATUS` from (((`ordem_servico` `os` join `cliente` `c` on((`COD_CLIENTE` = `c`.`COD_CLIENTE`))) join `funcionario` `f` on((`COD_FUNCIONARIO` = `f`.`COD_FUNCIONARIO`))) join `veiculo` `v` on((`COD_VEICULO` = `v`.`COD_VEICULO`)));
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `ordem_servico`
---
-ALTER TABLE `ordem_servico`
-  ADD CONSTRAINT `ordem_servico_ibfk_1` FOREIGN KEY (`COD_FUNCIONARIO`) REFERENCES `funcionario` (`COD_FUNCIONARIO`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `ordem_servico_ibfk_2` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `cliente` (`COD_CLIENTE`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `ordem_servico_ibfk_3` FOREIGN KEY (`COD_VEICULO`) REFERENCES `veiculo` (`COD_VEICULO`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `os_item`
---
-ALTER TABLE `os_item`
-  ADD CONSTRAINT `os_item_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`);
-
---
--- Limitadores para a tabela `veiculo`
---
-ALTER TABLE `veiculo`
-  ADD CONSTRAINT `veiculo_ibfk_1` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `cliente` (`COD_CLIENTE`);
-
---
--- Limitadores para a tabela `venda`
---
-ALTER TABLE `venda`
-  ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`COD_OS_ITEM`) REFERENCES `servico_produto` (`COD_SERVICO_PRODUTO`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `venda_ibfk_3` FOREIGN KEY (`TIPO_PAGAMENTO`) REFERENCES `tipo_pagamento` (`COD_TIPO`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

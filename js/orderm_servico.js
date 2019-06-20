@@ -6,7 +6,7 @@ $(function(){
 
 		var cod_funcionario = $("select[name='COD_FUNCIONARIO']").val();
 		var cod_cliente = $("select[name='COD_CLIENTE']").val();
-		var cod_veiculo = $("select[name='COD_VEICULO']").val();		
+		var cod_veiculo = $("select[name='COD_VEICULO']").val();
 
 		var parametros = {cod_funcionario: cod_funcionario, cod_cliente:cod_cliente, cod_veiculo: cod_veiculo};
 
@@ -14,6 +14,8 @@ $(function(){
 		.done(function(data){
 			cod_os = data;
 			
+			alert(cod_os);
+
 			var url = 'insere_os.php?tabela=os_item';
 
 			var cod_item = $("select[name='PRODUTO']").val();
