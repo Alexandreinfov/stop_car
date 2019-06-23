@@ -13,8 +13,21 @@
 	$coluna[]= "*";
 	
 	$condicao = null;
-	$ordenacao = null;
+	$ordenacao = "'DATA ABERTURA' LIMIT 10";
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
+
+	$parametros=null;
+	$parametros["type"]="text";
+	$parametros["name"]="input_busca";
+	$i = new Input($parametros);
+	$i->exibe();
+
+	$parametros=null;
+	$parametros["type"]="button";
+	$parametros["name"]="busca";
+	$parametros["value"]="buscar";
+	$i = new Input($parametros);
+	$i->exibe();
 
 	$t = new Tabela($m,"os",0, null);
 	

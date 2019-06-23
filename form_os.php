@@ -5,7 +5,7 @@
 	include("autenticacao.php");
 
 	$parametros = null;
-	$parametros["action"] = "insere.php?tabela=ORDEM_SERVICO";
+	$parametros["action"] = "insere.php?tabela=ordem_servico";
 	$parametros["method"] = "post";
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);

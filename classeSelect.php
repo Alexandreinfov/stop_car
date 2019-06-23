@@ -21,10 +21,10 @@
 		
 		public function exibe(){
 			echo "
-			<select name='$this->name'>";
+			<select name='$this->name' id='$this->name'>";
 			
 			if($this->options != null){
-				echo "<option>Selecione $this->label</option>";
+				echo "<option value='0'>Selecione $this->label</option>";
 				foreach($this->options as $i=>$o){
 					$o->exibe();
 				}
