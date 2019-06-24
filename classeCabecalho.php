@@ -64,10 +64,16 @@ public function exibe_menu(){
 			                <div class='bg-dark p-4'>
 			                    <ul class='navbar-nav'>
 			                        <li>
+									<a href='index.php'>
+										Percentual das O.S
+									</a>
+								</li>
+								<li>
 									<a href='listar_cliente.php'>
 										Cliente
 									</a>
 								</li>
+								<li>
 								<li>
 									<a href='listar_funcionario.php'>
 										Funcionário
