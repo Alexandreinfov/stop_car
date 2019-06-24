@@ -5,74 +5,47 @@ $(document).ready(function(){
     $('#btn').click(function(e){
        
 
-        $('#btn').hide();
-        $('#mensagem').html('<span class="mensagem">Aguarde,carregando ...</span>');  
-         
+        $('#btn').hide();  
         $.getJSON('consulta.php?opcao=cliente', function (dados){
              
-           if (dados.length > 0){    
+          
               var option = '<option>Selecione os Clientes</option>';
               $.each(dados, function(i, obj){
                   option += '<option value="'+obj.COD_OS+'">'+obj.NOME_CLIENTE+'</option>';
               })
-              //$('#mensagem').html('<span class="mensagem">Total   encontrados.: '+dados.length+'</span>'); 
+            
               $('#COD_OS').html(option).show();
-           }//else{
-            //   Reset();
-            //   $('#mensagem').html('<span class="mensagem">Não foram encontrados!</span>');
-           //}
+                 
         })
     })
   
-     
     <!-- Carrega os Produtos -->
     $('#COD_OS').change(function(e){
         var cliente = $('#COD_OS').val();
-        $('#mensagem').html('<span class="mensagem">Aguarde,carregando ...</span>');  
          
         $.getJSON('consulta.php?opcao=produto&valor='+cliente, 
         function (dados){ 
          
-           if (dados.length > 0){    
-              var option = '<option>Selecione o Produto</option>';
+              var option ;
+              var produto = 0;
+              var servico = 0;
+              var total = 0;
               $.each(dados, function(i, obj){
-                  option += '<option value="'+obj.PRECO+'">'+obj.DESCRICAO+' R$'+obj.PRECO+'</option>';
+                  option += '<tr><td>'+obj.QTDE+'</td><td>'+obj.DESCRICAO+'</td><td> R$'+obj.PRECO+'</td></tr>';
+                  if(parseFloat(obj.QTDE) > 1){
+                    produto += parseFloat(obj.QTDE) * parseFloat(obj.PRECO);
+                  }else{
+                    servico += parseFloat(obj.PRECO);
+                  }
+                  
               })
-             // $('#mensagem').html('<span class="mensagem">Total de produto encontrados.: '+dados.length+'</span>'); 
-           }//else{
-            //  Reset();
-           //   $('#mensagem').html('<span class="mensagem">Não foram encontrados produto !</span>');  
-          // }
-           $('#VALOR_TOTAL').html(option).show(); 
-        })
-    })
-     
-    /*<!-- Carrega as Cidades -->
-    $('#cmbProduto').change(function(e){
-        var produto = $('#cmbProduto').val();
-        $('#mensagem').html('<span class="mensagem">Aguarde, carregando ...</span>');  
+        
+              total = parseFloat(produto) + parseFloat(servico) ;
          
-        $.getJSON('consulta.php?opcao=tipo&valor='+produto, 
-        function (dados){
-             
-            if (dados.length > 0){   
-                var option = '<option>Selecione a Cidade</option>';
-                $.each(dados, function(i, obj){
-                    option += '<option>'+obj.nome+'</option>';
-                })
-                $('#mensagem').html('<span class="mensagem">Total de cidades encontradas.: '+dados.length+'</span>');
-            }else{
-                Reset();
-                $('#mensagem').html('<span class="mensagem">Não foram encontradas cidades para esse produto!</span>');  
-            }
-            $('#cmbCidade').html(option).show();
+           $('#VALOR').html(option).show(); 
+            document.getElementById('VALOR_TOTAL').value = total.toFixed(2);
+         //alert("Total produto "+produto+" Total servico "+servico+" total a pagar: "+total);
         })
     })
      
-    <!-- Resetar Selects -->
-    function Reset(){
-        $('#cmbCliente').empty().append('<option>Carregar Clientes</option>>');
-        $('#cmbProduto').empty().append('<option>Carregar Produtos</option>>');
-        $('#cmbCidade').empty().append('<option>Carregar pagamento</option>');
-    }*/
 });

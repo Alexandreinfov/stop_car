@@ -16,17 +16,45 @@
 	$parametros["method"] = "post";
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);
-
-	echo '<input type="button" value="Carregar clientes"
-			id="btn" class="botao"/>';
-
-	 $parametros["name"] = "COD_OS";
-	 $parametros["label"] = "COD_OS";
-	 $f->add_select($parametros,null,null);
 	
-	 $parametros["name"] = "VALOR_TOTAL";
-	 $parametros["label"] = "VALOR_TOTAL";
+	 $parametros["name"] = "COD_OS";
+	 $parametros["label"] = "devedores";
 	 $f->add_select($parametros,null,null);
+
+	$parametros = null;
+	$parametros["value"] = "Carregar clientes";
+	$parametros["type"] = "button";
+	$parametros["name"] = "btn";
+	$parametros["id"] = "btn";
+	$f->add_input($parametros);
+	
+
+	  		
+	  echo "<center><div class='table-responsive'>
+	  <table border='1' class='table-hover '>
+		    <thead>
+		        <tr>
+		            <th>Quantidade</th>
+		            <th>Descricação</th>
+		            <th>Preço</th>
+		        </tr>
+		    </thead>
+		    <tbody id='VALOR'>
+		    </tbody>
+		</table>
+		</div></center>";
+	// $parametros["name"] = "VALOR_TOTAL";
+	// $parametros["label"] = "VALOR_TOTAL";
+	// $f->add_select($parametros,null,null);
+	//echo '<input type="text" name="VALOR_TOTAL" id="VALOR_TOTAL" disabled>';
+
+	$parametros = null;
+	$parametros["label"] = "Total a Pagar";
+	$parametros["name"] = "VALOR_TOTAL";
+	$parametros["type"] = "text";
+	$parametros["modo"] = "readonly";
+	$parametros["placeholder"] = "Total a pagar";	
+	$f->add_input($parametros); //adcionando os parametros passados para o add_input.
 
 	$parametros = null;
 	$parametros["name"] = "TIPO_PAGAMENTO";
@@ -39,7 +67,7 @@
 		$parcela[] = array("label"=>$i."X  sem juros");
 	}
 	$parametros["name"] = "PARCELAS";
-	$parametros["label"] = "Parcelas";
+	$parametros["label"] = "Total De Parcelas";
 	$f->add_select($parametros, $parcela, null);
 
 

@@ -11,6 +11,7 @@
 		private $class;
 		private $required;
 		private $data_cript;
+		private $modo;
 		
 		public function get_name(){
 			return($this->name);
@@ -51,6 +52,9 @@
 			if(isset($parametros["data_cript"])){
 				$this->data_cript = $parametros["data_cript"];
 			}
+			if(isset($parametros["modo"])){
+				$this->modo = $parametros["modo"];
+			}
 		}
 		
 		public function exibe(){
@@ -78,6 +82,9 @@
 			}
 			if($this->data_cript!=null){
 				echo " data-cript='$this->data_cript' ";
+			}
+				if($this->modo!=null){
+				echo " $this->modo ";
 			}
 			echo " /><br />";
 		}

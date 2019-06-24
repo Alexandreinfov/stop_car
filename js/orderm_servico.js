@@ -62,7 +62,7 @@ $(function(){
 			 		}
 
 
-					var parametros = {cod_os: cod_os, cod_item: cod_servico, qtde:0};
+					var parametros = {cod_os: cod_os, cod_item: cod_servico};
 				
 					if(cod_servico>0){
 					$.post(url,parametros)

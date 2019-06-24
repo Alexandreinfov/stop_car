@@ -29,11 +29,6 @@ if (! empty($opcao)){
             echo getFilterProduto($valor);
             break;
         }
-        case 'tipo':
-        {
-            echo getFilterTipo($valor);
-            break;
-        }
     }
 }
 
@@ -52,10 +47,12 @@ function getAllCliente(){
 
     
 }
-function getFilterProduto($pais){
+function getFilterProduto($produto){
     $pdo = Conectar();
     $sql =  'SELECT S.COD_SERVICO_PRODUTO, 
-    S.DESCRICAO, S.PRECO,
+    S.DESCRICAO,
+    S.PRECO,
+    OI.QTDE,
     OI.COD_ITEM
     FROM 
     servico_produto S,
@@ -64,21 +61,11 @@ function getFilterProduto($pais){
     AND OI.COD_ITEM = S.COD_SERVICO_PRODUTO';
 
     $stm = $pdo->prepare($sql);
-    $stm->bindValue(1, $pais);
+    $stm->bindValue(1, $produto);
     $stm->execute();
         //sleep(1);
     echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
     $pdo = null;    
 }
 
-function getFilterTipo($estado){
-    $pdo = Conectar();
-    $sql = 'SELECT nome FROM cidade WHERE uf = ?';
-    $stm = $pdo->prepare($sql);
-    $stm->bindValue(1, $estado);
-    $stm->execute();
-    sleep(1);
-    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
-    $pdo = null;        
-}
 ?>
