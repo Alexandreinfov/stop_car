@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 20-Jun-2019 às 17:16
+-- Data de Criação: 24-Jun-2019 às 04:11
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -85,50 +85,25 @@ CREATE TABLE IF NOT EXISTS `ordem_servico` (
   `COD_FUNCIONARIO` int(11) NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `COD_VEICULO` int(11) NOT NULL,
-  `TOTAL_OS` double(8,2) NOT NULL,
   `STATUS` enum('orçamento','aprovado','finalizado','faturado') NOT NULL DEFAULT 'orçamento',
   PRIMARY KEY (`COD_OS`),
   KEY `COD_FUNCIONARIO` (`COD_FUNCIONARIO`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `COD_VEICULO` (`COD_VEICULO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
 -- Extraindo dados da tabela `ordem_servico`
 --
 
-INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `TOTAL_OS`, `STATUS`) VALUES
-(1, '2019-06-18 23:30:06', NULL, 2, 5, 29, 0.00, 'orçamento'),
-(2, '2019-06-18 23:30:08', NULL, 2, 5, 29, 0.00, 'orçamento'),
-(3, '2019-06-18 23:30:58', NULL, 2, 3, 28, 0.00, 'orçamento'),
-(4, '2019-06-18 23:31:43', NULL, 2, 3, 29, 0.00, 'orçamento'),
-(5, '2019-06-18 23:33:11', NULL, 2, 3, 28, 0.00, 'orçamento'),
-(6, '2019-06-18 23:34:56', NULL, 2, 3, 28, 0.00, 'orçamento'),
-(7, '2019-06-18 23:35:41', NULL, 2, 3, 28, 0.00, 'orçamento'),
-(8, '2019-06-18 23:48:14', NULL, 2, 4, 28, 0.00, 'orçamento'),
-(9, '2019-06-18 23:50:21', NULL, 2, 3, 28, 0.00, 'orçamento'),
-(10, '2019-06-18 23:51:08', NULL, 2, 4, 28, 0.00, 'orçamento'),
-(11, '2019-06-18 23:58:04', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(12, '2019-06-18 23:58:40', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(13, '2019-06-19 00:02:59', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(14, '2019-06-19 00:03:33', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(15, '2019-06-19 00:04:20', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(16, '2019-06-19 00:04:21', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(17, '2019-06-19 00:04:22', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(18, '2019-06-19 00:04:39', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(19, '2019-06-19 00:06:38', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(20, '2019-06-19 00:08:19', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(21, '2019-06-19 00:16:54', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(22, '2019-06-19 00:18:08', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(23, '2019-06-19 00:20:07', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(24, '2019-06-19 00:22:38', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(25, '2019-06-19 00:23:01', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(26, '2019-06-19 00:23:29', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(27, '2019-06-19 00:25:10', NULL, 0, 0, 0, 0.00, 'orçamento'),
-(28, '2019-06-19 00:41:05', NULL, 2, 4, 28, 0.00, 'orçamento'),
-(29, '2019-06-19 00:42:01', NULL, 2, 4, 29, 0.00, 'orçamento'),
-(30, '2019-06-19 00:42:31', NULL, 2, 4, 28, 0.00, 'orçamento'),
-(31, '2019-06-19 00:48:22', NULL, 0, 0, 0, 0.00, 'orçamento');
+INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_FUNCIONARIO`, `COD_CLIENTE`, `COD_VEICULO`, `STATUS`) VALUES
+(54, '2019-06-23 21:30:50', NULL, 2, 3, 28, 'orçamento'),
+(55, '2019-06-23 21:30:59', NULL, 2, 4, 28, 'aprovado'),
+(56, '2019-06-23 21:31:08', NULL, 2, 5, 28, 'finalizado'),
+(57, '2019-06-24 00:59:28', NULL, 2, 3, 29, 'faturado'),
+(58, '2019-06-24 01:01:00', NULL, 2, 3, 29, 'orçamento'),
+(59, '2019-06-24 01:01:04', NULL, 2, 5, 29, 'orçamento'),
+(60, '2019-06-24 01:01:06', NULL, 2, 3, 29, 'orçamento');
 
 -- --------------------------------------------------------
 
@@ -136,12 +111,16 @@ INSERT INTO `ordem_servico` (`COD_OS`, `DATA_ABERTURA`, `DATA_FECHAMENTO`, `COD_
 -- Stand-in structure for view `os`
 --
 CREATE TABLE IF NOT EXISTS `os` (
-`CODIGO` int(11)
+`COD_OS` int(11)
+,`NOME_CLIENTE` varchar(50)
+,`TELEFONE` varchar(20)
+,`NOME_FUNCIONARIO` varchar(50)
+,`PLACA` varchar(7)
+,`MODELO` varchar(20)
+,`MARCA` varchar(20)
+,`ANO` year(4)
 ,`DATA ABERTURA` datetime
 ,`DATA FECHAMENTO` datetime
-,`FUNCIONARIO` varchar(50)
-,`CLIENTE` varchar(50)
-,`PLACA` varchar(7)
 ,`STATUS` enum('orçamento','aprovado','finalizado','faturado')
 );
 -- --------------------------------------------------------
@@ -154,54 +133,26 @@ CREATE TABLE IF NOT EXISTS `os_item` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `COD_OS` int(11) NOT NULL,
   `COD_ITEM` int(11) DEFAULT NULL,
-  `QTDE` int(11) DEFAULT NULL,
+  `QTDE` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   KEY `COD_OS` (`COD_OS`),
   KEY `COD_ITEM` (`COD_ITEM`),
   KEY `COD_ITEM_2` (`COD_ITEM`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `os_item`
 --
 
 INSERT INTO `os_item` (`ID`, `COD_OS`, `COD_ITEM`, `QTDE`) VALUES
-(1, 0, 26, 0),
-(2, 0, 0, NULL),
-(3, 0, 26, 1),
-(4, 0, 24, NULL),
-(5, 0, 26, 2),
-(6, 0, 24, NULL),
-(7, 12, 0, 0),
-(8, 12, 0, NULL),
-(9, 0, 0, 0),
-(10, 0, 0, NULL),
-(11, 0, 0, 0),
-(12, 0, 0, NULL),
-(13, 0, 0, 0),
-(14, 0, 0, NULL),
-(15, 0, 0, 0),
-(16, 0, 0, NULL),
-(17, 0, 0, 0),
-(18, 0, 0, NULL),
-(19, 0, 0, 0),
-(20, 0, 0, NULL),
-(21, 0, 0, 0),
-(22, 0, 0, NULL),
-(23, 2525, 0, 0),
-(24, 2525, 0, NULL),
-(25, 26, 0, 0),
-(26, 26, 0, NULL),
-(27, 2710, 0, 0),
-(28, 2710, 0, NULL),
-(29, 10, 27, 2),
-(30, 10, 25, NULL),
-(31, 10, 26, 2),
-(32, 10, 25, NULL),
-(33, 0, 26, 3),
-(34, 0, 24, NULL),
-(35, 0, 0, 0),
-(36, 0, 0, NULL);
+(19, 54, 26, 3),
+(20, 54, 25, 1),
+(21, 55, 26, 3),
+(22, 56, 24, 1),
+(23, 57, 27, 10),
+(24, 58, 24, 1),
+(25, 59, 24, 1),
+(26, 60, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -238,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `tipo_pagamento` (
   `DESCRICAO_TIPO` varchar(30) NOT NULL,
   `PARCELAS` int(11) NOT NULL,
   PRIMARY KEY (`COD_TIPO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `tipo_pagamento`
@@ -246,7 +197,8 @@ CREATE TABLE IF NOT EXISTS `tipo_pagamento` (
 
 INSERT INTO `tipo_pagamento` (`COD_TIPO`, `DESCRICAO_TIPO`, `PARCELAS`) VALUES
 (6, 'CARTAO', 0),
-(7, 'DINHEIRO', 0);
+(7, 'DINHEIRO', 0),
+(8, '', 0);
 
 -- --------------------------------------------------------
 
@@ -306,13 +258,32 @@ INSERT INTO `veiculo` (`COD_VEICULO`, `PLACA`, `MODELO`, `MARCA`, `ANO`, `COD_CL
 
 CREATE TABLE IF NOT EXISTS `venda` (
   `COD_VENDA` int(11) NOT NULL AUTO_INCREMENT,
-  `TIPO_PAGAMENTO` int(11) NOT NULL,
+  `TIPO_PAGAMENTO` varchar(50) NOT NULL,
+  `PARCELAS` int(11) NOT NULL,
   `COD_OS` int(6) NOT NULL,
   `VALOR_TOTAL` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`COD_VENDA`),
   KEY `COD_OS` (`COD_OS`),
   KEY `TIPO_PAGAMENTO` (`TIPO_PAGAMENTO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Extraindo dados da tabela `venda`
+--
+
+INSERT INTO `venda` (`COD_VENDA`, `TIPO_PAGAMENTO`, `PARCELAS`, `COD_OS`, `VALOR_TOTAL`) VALUES
+(7, 'cartao', 6, 54, '1023.32'),
+(8, 'cartao', 4, 55, '35.34');
+
+--
+-- Acionadores `venda`
+--
+DROP TRIGGER IF EXISTS `FECHAMENTO_OS`;
+DELIMITER //
+CREATE TRIGGER `FECHAMENTO_OS` AFTER UPDATE ON `venda`
+ FOR EACH ROW UPDATE ORDEM_SERVICO SET STATUS = 'FATURADO' WHERE COD_OS
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -321,7 +292,24 @@ CREATE TABLE IF NOT EXISTS `venda` (
 --
 DROP TABLE IF EXISTS `os`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `os` AS select `COD_OS` AS `CODIGO`,`DATA_ABERTURA` AS `DATA ABERTURA`,`DATA_FECHAMENTO` AS `DATA FECHAMENTO`,`f`.`NOME` AS `FUNCIONARIO`,`c`.`NOME` AS `CLIENTE`,`v`.`PLACA` AS `PLACA`,`STATUS` AS `STATUS` from (((`ordem_servico` `os` join `cliente` `c` on((`COD_CLIENTE` = `c`.`COD_CLIENTE`))) join `funcionario` `f` on((`COD_FUNCIONARIO` = `f`.`COD_FUNCIONARIO`))) join `veiculo` `v` on((`COD_VEICULO` = `v`.`COD_VEICULO`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `os` AS select `ordem_servico`.`COD_OS` AS `COD_OS`,`cliente`.`NOME` AS `NOME_CLIENTE`,`cliente`.`TELEFONE` AS `TELEFONE`,`funcionario`.`NOME` AS `NOME_FUNCIONARIO`,`veiculo`.`PLACA` AS `PLACA`,`veiculo`.`MODELO` AS `MODELO`,`veiculo`.`MARCA` AS `MARCA`,`veiculo`.`ANO` AS `ANO`,`ordem_servico`.`DATA_ABERTURA` AS `DATA ABERTURA`,`ordem_servico`.`DATA_FECHAMENTO` AS `DATA FECHAMENTO`,`ordem_servico`.`STATUS` AS `STATUS` from (((`ordem_servico` join `funcionario` on((`ordem_servico`.`COD_FUNCIONARIO` = `funcionario`.`COD_FUNCIONARIO`))) join `cliente` on((`ordem_servico`.`COD_CLIENTE` = `cliente`.`COD_CLIENTE`))) join `veiculo` on((`ordem_servico`.`COD_VEICULO` = `veiculo`.`COD_VEICULO`)));
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `os_item`
+--
+ALTER TABLE `os_item`
+  ADD CONSTRAINT `os_item_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`),
+  ADD CONSTRAINT `os_item_ibfk_2` FOREIGN KEY (`COD_ITEM`) REFERENCES `servico_produto` (`COD_SERVICO_PRODUTO`);
+
+--
+-- Limitadores para a tabela `venda`
+--
+ALTER TABLE `venda`
+  ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`COD_OS`) REFERENCES `ordem_servico` (`COD_OS`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

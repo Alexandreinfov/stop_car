@@ -55,7 +55,7 @@ public function exibe_menu(){
 			                    data-target='#menu'>
 			                    <span class='navbar-toggler-icon'></span>
 			                </button>
-			                <a href='todo.php'
+			                <a href='index.php'
 			                    class='navbar-brand logotipo'>
 			                    <img src='img/to-do.jpg' alt='Logotipo'/>
 			                </a>
