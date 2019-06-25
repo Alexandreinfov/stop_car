@@ -37,7 +37,7 @@ if (! empty($opcao)){
 
 function getAllCliente(){
     $pdo = Conectar();
-    $sql = 'SELECT COD_OS, NOME_CLIENTE FROM os ';
+    $sql = 'SELECT COD_OS, NOME_CLIENTE FROM OS';
     //$sql = 'SELECT COD_OS, NOME_CLIENTE FROM os WHERE STATUS = "finalizado"';
     $stm = $pdo->prepare($sql);
     $stm->execute();

@@ -14,12 +14,11 @@ $(document).ready(function(){
                   option += '<option value="'+obj.COD_OS+'">'+obj.NOME_CLIENTE+'</option>';
               })
             
-              $('#COD_OS').html(option).show();
-                 
+              $('#COD_OS').html(option).show();   
         })
     })
   
-    <!-- Carrega os Produtos -->
+    //Carrega os Produtos
     $('#COD_OS').change(function(e){
         var cliente = $('#COD_OS').val();
          

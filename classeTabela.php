@@ -6,12 +6,17 @@
 		private $alterar;
 		private $remover;
 		private $tabela;
+		private $tabela_os;
 		
-		public function __construct($matriz,$tabela,$alterar,$remover){			
+		public function __construct($matriz,$tabela,$alterar,$remover, $tabela_os){			
 				$this->matriz = $matriz;
 				$this->alterar = $alterar;
 				$this->remover = $remover;
 				$this->tabela = $tabela;
+
+				if(isset($tabela_os)){
+					$this->tabela_os = $tabela_os;
+				}
 		}
 		
 		
@@ -34,8 +39,7 @@
 									echo "<th>$j</th>";
 								}
 							}
-							
-							if($this->remover!=null || $this->alterar!=null){
+							if($this->tabela_os == true){
 								echo "<th>Ação</th>";
 							}
 							
@@ -50,17 +54,11 @@
 								echo "<td class='$j'>$valor</td>";
 							}
 						}
-						if($this->remover!=null || $this->alterar!=null){
-							echo "<th>";
-								if($this->alterar!=null){
-									//echo "<a href='form_$this->tabela.php?id=$linha[0]'>Alterar</a> ";
-									echo "<button class='alterar'>alterar</button>";
-								}
-								if($this->remover!=null){
-									echo " <a href='remover.php?tabela=$this->tabela&id=$linha[0]'>Remover</a>";
-								}
-							echo "</th>";							
+
+						if($this->tabela_os == true){
+							echo "<tr> </tr>";	
 						}
+						
 						echo "</tr>";					
 					}
 				}else{

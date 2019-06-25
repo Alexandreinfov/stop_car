@@ -29,7 +29,7 @@
 	$i = new Input($parametros);
 	$i->exibe();
 
-	$t = new Tabela($m,"os",0, null);
+	$t = new Tabela($m,"os",0, null, true);
 	
 	$t->exibe();
 ?>

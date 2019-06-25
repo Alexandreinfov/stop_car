@@ -44,7 +44,7 @@
 	$faturado = null;
 	$faturado = $stmt->fetch();
 
-	$title = 'Andamentos das ordens de servico';
+	$title = 'Percentual das ordens de servico';
 	$data = array(
 		array('orcamento' , $orcamento[0] ), 
 		array('aprovado' , $aprovado[0] ),

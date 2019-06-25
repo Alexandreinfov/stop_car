@@ -14,8 +14,6 @@ $(function(){
 		});
 	});
 
-
-
 	cod_os = "";
 	$("input[name='cadastrar']").click(function(){
 
@@ -48,31 +46,33 @@ $(function(){
 				console.log(cod_produto + " | " + cod_servico);
 				
 
-					var url = 'insere_os.php?tabela=os_item';
+				var url = 'insere_os.php?tabela=os_item';
 
-					var parametros = {cod_os: cod_os, cod_item: cod_produto, qtde:qtde};
+				var parametros = {cod_os: cod_os, cod_item: cod_produto, qtde:qtde};
 				
-					if(cod_produto>0){
-						$.post(url,parametros)
-						.done(function(data){
-
-						}).fail(function(){
-
-						});		
-			 		}
-
-
-					var parametros = {cod_os: cod_os, cod_item: cod_servico};
-				
-					if(cod_servico>0){
+				if(cod_produto>0){
 					$.post(url,parametros)
 					.done(function(data){
 
 					}).fail(function(){
 
 					});		
-		
+		 		}
+
+
+				var parametros = {cod_os: cod_os, cod_item: cod_servico};
+					
+				if(cod_servico>0){
+					$.post(url,parametros)
+						.done(function(data){
+	
+						}).fail(function(){
+
+						});		
 				}
+
+				alert("Ordem de serviço "+cod_os+" cadastrada com sucesso.");
+				location.reload();
 			});
 		}	
 	});

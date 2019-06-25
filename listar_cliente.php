@@ -20,7 +20,7 @@
 	$ordenacao = null;
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
 
-	$t = new Tabela($m,"cliente",0, null);
+	$t = new Tabela($m,"cliente",0, null, false);
 	
 	$t->exibe();
 ?>

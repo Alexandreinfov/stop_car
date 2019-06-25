@@ -17,9 +17,9 @@
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);
 	
-	 $parametros["name"] = "COD_OS";
-	 $parametros["label"] = "devedores";
-	 $f->add_select($parametros,null,null);
+	$parametros["name"] = "COD_OS";
+	$parametros["label"] = "devedores";
+	$f->add_select($parametros,null,null);
 
 	$parametros = null;
 	$parametros["value"] = "Carregar clientes";

@@ -18,7 +18,7 @@
 	$ordenacao = null;
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
 
-	$t = new Tabela($m,"servico",0, null);
+	$t = new Tabela($m,"servico",0, null, false);
 	
 	$t->exibe();
 ?>
