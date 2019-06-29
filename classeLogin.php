@@ -27,7 +27,7 @@
 					data-toggle='modal' data-target='#NovoUsuario'>
 					Cadastrar</button>
 					
-						<div>
+						<div class='float-left'>
 							<button type='submit'
 							class='btn btn-primary'>Entrar</button>
 						</div>

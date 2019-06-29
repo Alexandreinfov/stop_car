@@ -16,8 +16,19 @@
 	$parametros["method"] = "post";
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);
-	
+
+	$consulta = "SELECT CODIGO as value, CLIENTE as label FROM os WHERE STATUS = 'Finalizado'";
+	$stmt = $conexao->prepare($consulta);
+	$stmt->execute();
+	$clientes = null;
+	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
+		$clientes[] = $linha;
+	}
 	$parametros["name"] = "COD_OS";
+	$parametros["label"] = "Clientes";
+	$f->add_select($parametros, $clientes, null);
+	
+	/*$parametros["name"] = "COD_OS";
 	$parametros["label"] = "devedores";
 	$f->add_select($parametros,null,null);
 
@@ -26,7 +37,7 @@
 	$parametros["type"] = "button";
 	$parametros["name"] = "btn";
 	$parametros["id"] = "btn";
-	$f->add_input($parametros);
+	$f->add_input($parametros);*/
 	
 
 	  		

@@ -10,19 +10,6 @@
 	$parametros["tipoForm"] = "Ordem de Serviço";
 	$f = new Form($parametros);
 
-	//SELECT FUNCIONARIO
-	$consulta = "SELECT COD_FUNCIONARIO as value, NOME as label FROM FUNCIONARIO";
-	$stmt = $conexao->prepare($consulta);
-	$stmt->execute();
-	$funcionarios = null;
-	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
-		$funcionarios[] = $linha;
-	}
-	$parametros["name"] = "COD_FUNCIONARIO";
-	$parametros["label"] = "Funcionários";
-	$f->add_select($parametros, $funcionarios, null);
-
-	//SELECT CLIENTE
 	$consulta = "SELECT COD_CLIENTE as value, NOME as label FROM CLIENTE";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
@@ -35,7 +22,37 @@
 	$f->add_select($parametros, $clientes, null);
 
 
-	//SELECT VEICULO
+		$parametros["name"] = "COD_VEICULO";
+	$parametros["label"] = "Veiculo";
+	$f->add_select($parametros,null,null);
+
+
+//SELECT FUNCIONARIO
+	$consulta = "SELECT COD_FUNCIONARIO as value, NOME as label FROM FUNCIONARIO";
+	$stmt = $conexao->prepare($consulta);
+	$stmt->execute();
+	$funcionarios = null;
+	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
+		$funcionarios[] = $linha;
+	}
+	$parametros["name"] = "COD_FUNCIONARIO";
+	$parametros["label"] = "Funcionários";
+	$f->add_select($parametros, $funcionarios, null);
+
+	/*//SELECT CLIENTE
+	$consulta = "SELECT COD_CLIENTE as value, NOME as label FROM CLIENTE";
+	$stmt = $conexao->prepare($consulta);
+	$stmt->execute();
+	$clientes = null;
+	while($linha = $stmt->fetch()){ //pegando os valores linha por linha.
+		$clientes[] = $linha;
+	}
+	$parametros["name"] = "COD_CLIENTE";
+	$parametros["label"] = "Clientes";
+	$f->add_select($parametros, $clientes, null);*/
+
+
+	/*//SELECT VEICULO
 	$consulta = "SELECT COD_VEICULO as value, PLACA as label FROM VEICULO";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
@@ -45,10 +62,10 @@
 	}
 	$parametros["name"] = "COD_VEICULO";
 	$parametros["label"] = "Veículos";
-	$f->add_select($parametros, $veiculos, null);
+	$f->add_select($parametros, $veiculos, null);*/
 
 	//SELECT PRODUTO
-	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'p'";
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'produto'";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$produtos = null;
@@ -67,7 +84,7 @@
 	$f->add_input($parametros); //adcionando os parametros passados para o add_input.
 
 	//SELECT SERVIÇO
-	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 's'";
+	$consulta = "SELECT COD_SERVICO_PRODUTO as value, DESCRICAO as label FROM SERVICO_PRODUTO WHERE TIPO = 'servico'";
 	$stmt = $conexao->prepare($consulta);
 	$stmt->execute();
 	$servicos = null;

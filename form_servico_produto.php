@@ -26,7 +26,7 @@
 	$parametros = null;
 	$parametros["name"] = "tipo";
 	$parametros["type"] = "radio";
-	$parametros["opcoes"] = array("p"=>"Produto","s"=>"Serviço");
+	$parametros["opcoes"] = array("produto"=>"Produto","servico"=>"Serviço");
 	$parametros["label"] = "Tipo";	
 	$parametros["value"] = "s";	
 	$f->add_inputOpcoes($parametros);

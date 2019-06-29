@@ -29,6 +29,16 @@ if (! empty($opcao)){
             echo getFilterProduto($valor);
             break;
         }
+             case 'os':
+        {
+            echo getAllos($valor);
+            break;
+        }
+               case 'veiculo':
+        {
+            echo getFilterveiculo($valor);
+            break;
+        }
     }
 }
 
@@ -37,8 +47,8 @@ if (! empty($opcao)){
 
 function getAllCliente(){
     $pdo = Conectar();
-    $sql = 'SELECT COD_OS, NOME_CLIENTE FROM OS';
-    //$sql = 'SELECT COD_OS, NOME_CLIENTE FROM os WHERE STATUS = "finalizado"';
+    //$sql = 'SELECT COD_OS, NOME_CLIENTE FROM OS';
+    $sql = 'SELECT CODIGO, CLIENTE FROM os WHERE STATUS = "finalizado"';
     $stm = $pdo->prepare($sql);
     $stm->execute();
         //sleep(1);
@@ -68,4 +78,33 @@ function getFilterProduto($produto){
     $pdo = null;    
 }
 
+
+function getAllos(){
+    $pdo = Conectar();
+    //$sql = 'SELECT COD_OS, NOME_CLIENTE FROM OS';
+    $sql = 'SELECT COD_CLIENTE, NOME FROM cliente';
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+        //sleep(1);
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;    
+    
+}
+
+function getFilterveiculo($veiculo){
+    $pdo = Conectar();
+    $sql =  'SELECT COD_VEICULO,PLACA,MODELO,MARCA
+    FROM 
+    veiculo     
+    WHERE COD_CLIENTE = ? ';
+
+    $stm = $pdo->prepare($sql);
+    $stm->bindValue(1, $veiculo);
+    $stm->execute();
+        //sleep(1);
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;    
+}
+
 ?>
+

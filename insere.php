@@ -15,12 +15,15 @@
 				echo "<br/><h2><center> Serviço cadastrado(a) com sucesso.</h2></center><br />";
 			}
 		break;
+
 		case 'Veiculo':
 			echo "<br/><h2><center> Automovel ".$_POST["modelo"]."  cadastrado com sucesso.!</h2></center><br />";
 		break;
-		case 'ORDEM_SERVICO':
-			echo "<br/><h2><center> A Ordem de Serviço foi emitida com sucesso.</h2></center><br />";
+
+		case 'venda':
+			echo "<br/><h2><center> Venda efetuada com sucesso.</h2></center><br />";
 		break;
+
 		default:
 			echo "<br/><h2><center>".$_GET["tabela"]." cadastrado(a) com sucesso.</h2></center><br />";
 		break;

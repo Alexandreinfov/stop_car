@@ -19,7 +19,7 @@
 
 	$parametros = null;
 	$parametros["name"] = "cpf";
-	$parametros["type"] = "number";
+	$parametros["type"] = "text";
 	$parametros["placeholder"] = "Digite o CPF"; 
 	$f->add_input($parametros); //adcionando os parametros passados para o add_input.
 

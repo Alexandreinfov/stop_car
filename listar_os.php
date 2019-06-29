@@ -13,8 +13,10 @@
 	$coluna[]= "*";
 	
 	$condicao = null;
-	$ordenacao = "'DATA ABERTURA' LIMIT 10";
+	$ordenacao = "'DATA ABERTURA'";
 	$m = $bd->select($tabela,$coluna,$condicao,$ordenacao);
+
+	echo "<hr/><hr/>";
 
 	$parametros=null;
 	$parametros["type"]="text";
@@ -30,13 +32,14 @@
 	$i->exibe();
 
 	$t = new Tabela($m,"os",0, null, true);
-	
-	$t->exibe();
-?>
 
+	$t->exibe();
+?>	
 	<script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/alterar_cidade.js"></script>
-     <script src="js/orderm_servico.js"></script>
+    <script src="js/orderm_servico.js"></script>
+    <script src="js/os.js"></script>
+
 </body>
 </html>

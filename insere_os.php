@@ -5,7 +5,6 @@
 	$operacao = new BancoDeDados($conexao);
 	$operacao->insercao($_GET["tabela"],$_POST);
 	
-	
 	$tabela[]="ordem_servico";
 	$coluna[] = "MAX(COD_OS) as id";
 	$condicao = null;
