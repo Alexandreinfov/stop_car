@@ -76,4 +76,71 @@ $(function(){
 			});
 		}	
 	});
+
+	function editDados(){
+
+		alert("EDITA");
+		alert(produto+" | "+qtde+" | "+servico);
+
+		var linha=$(this).closest('.dados');
+
+		var cliente 	= linha.children('.CLIENTE').text();
+		var funcionario = linha.children('.FUNCIONARIO').text();
+		var veiculo 	= linha.children('.PLACA').text();
+		var produto 	= linha.children('.PRODUTO').text();
+		var qtde 		= linha.children('.QTDE').text();
+		var servico 	= linha.children('.SERVICO').text();
+
+		
+
+		switch(status){
+
+			case "Nova": status="1";
+			break;
+
+			case "Em andamento": status="2";
+			break;
+
+			case "Finalizada": status="3";
+			break;
+		}
+
+		$('#id').val(id);
+		$('#descricao').val(texto);
+		$('#data').val(data);
+		$('#status option').removeAttr('selected').filter('[value='+status +']').prop('selected', 'selected');
+
+		$('#NovaTarefa').modal();
+	}
+
+	function mudarStatus()
+	{
+		var linha = $(this).closest('.dados');
+
+		var cod_os 	= linha.children('.CODIGO').text();
+		var status 	= linha.children('.STATUS').text();
+
+		switch(status)
+		{
+			case 'Orçamento': status='Aprovado';
+			break;
+
+			case 'Aprovado': status='Finalizado';
+			break;
+
+			case 'Finalizado': status='Finalizado';
+			break;
+		}
+
+		var url = 'http://localhost:8081/stop_car/insere_status.php';
+		var parametros = {cod_os:cod_os, status:status};
+
+		$.post(url,parametros, 
+		function(){
+			location.reload(true);
+		});
+	}
+
+	$('.mudar').click(mudarStatus);
+	$('.alterar').click(editDados);
 });
